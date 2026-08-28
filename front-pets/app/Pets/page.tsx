@@ -139,6 +139,7 @@ export default function Pets() {
                                             type="text"
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
+                                            placeholder="Name"
                                             className="border rounded-lg p-2 text-gray-900"
                                         />
 
@@ -146,6 +147,7 @@ export default function Pets() {
                                             type="text"
                                             value={type}
                                             onChange={(e) => setType(e.target.value)}
+                                            placeholder="Type"
                                             className="border rounded-lg p-2 text-gray-900"
                                         />
 
@@ -153,6 +155,7 @@ export default function Pets() {
                                             type="number"
                                             value={age}
                                             onChange={(e) => setAge(e.target.value)}
+                                            placeholder="Age"
                                             className="border rounded-lg p-2 text-gray-900"
                                         />
 
@@ -160,6 +163,7 @@ export default function Pets() {
                                             type="text"
                                             value={breed}
                                             onChange={(e) => setBreed(e.target.value)}
+                                            placeholder="Breed"
                                             className="border rounded-lg p-2 text-gray-900"
                                         />
 

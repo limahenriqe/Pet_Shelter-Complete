@@ -1,0 +1,59 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: pet-shelter-mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pet_shelter
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  api:
+    build:
+      context: ./api-pets
+
+    container_name: pet-shelter-api
+
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: pet_shelter
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+
+  front:
+    build:
+      context: ./front-pets
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3000
+
+    container_name: pet-shelter-front
+
+    ports:
+      - "3001:3001"
+
+    depends_on:
+      - api
+
+volumes:
+  mysql_data:
