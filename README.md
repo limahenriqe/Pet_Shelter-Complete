@@ -102,6 +102,7 @@ Pet Detail   → GET    /pets/:id
 Add Pet      → POST   /pets
 Edit Pet     → PUT    /pets/:id
 Delete Pet   → DELETE /pets/:id
+
 🗄️ Database
 
 The project uses MySQL as the database.
