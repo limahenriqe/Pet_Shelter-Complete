@@ -9,7 +9,7 @@ services:
       MYSQL_DATABASE: pet_shelter
 
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
     volumes:
       - mysql_data:/var/lib/mysql
@@ -28,11 +28,10 @@ services:
     container_name: pet-shelter-api
 
     environment:
-      PORT: 3000
       DB_HOST: mysql
-      DB_NAME: pet_shelter
       DB_USER: root
       DB_PASSWORD: root
+      DB_NAME: pet_shelter
 
     ports:
       - "3000:3000"
@@ -45,11 +44,10 @@ services:
   front:
     build:
       context: ./front-pets
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3000
 
     container_name: pet-shelter-front
-
-    environment:
-      NEXT_PUBLIC_API_URL: http://localhost:3000
 
     ports:
       - "3001:3001"
