@@ -52,6 +52,7 @@ Pet_Shelter-Complete/
 └── README.md
 ⚙️ Installation with Docker
 
+```text
 Clone the repository:
 
 git clone <repository-url>
