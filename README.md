@@ -69,6 +69,7 @@ Docker Compose will automatically start:
 Frontend
 Backend API
 MySQL Database
+
 🌐 Application Access
 
 Frontend:
@@ -82,6 +83,7 @@ http://localhost:3000
 Pets endpoint:
 
 http://localhost:3000/pets
+
 🔗 API Endpoints
 Method	Endpoint	Description
 POST	/pets	Registers a new pet
@@ -89,6 +91,7 @@ GET	/pets	Displays all registered pets
 GET	/pets/:id	Displays a pet by ID
 PUT	/pets/:id	Updates pet information
 DELETE	/pets/:id	Deletes a pet
+
 🔄 CRUD Integration
 
 The frontend communicates with the API through the following operations:
@@ -123,6 +126,7 @@ Example query:
 USE pet_shelter;
 
 SELECT * FROM Pets;
+
 🐳 Docker
 
 The application uses three containers:
@@ -140,17 +144,50 @@ Node.js / Express API
 Sequelize
        ↓
 MySQL
-🛑 Stop the Application
 
-To stop the containers:
+## 📥 Clone and Run the Project
+
+If you want to clone this repository and run the complete application on your machine, you only need Git and Docker installed.
+
+## Clone the repository:
+
+```bash
+git clone <repository-url>
+
+Enter the project folder:
+
+cd Pet_Shelter-Complete
+
+Start the complete environment:
+
+docker compose up --build --pull always
+
+Docker Compose will automatically:
+
+Build the frontend
+Build the backend API
+Download the MySQL image
+Create the database container
+Start all services
+Connect the API to the database
+
+After the containers are running, access:
+
+Frontend: http://localhost:3001
+Backend API: http://localhost:3000
+Pets endpoint: http://localhost:3000/pets
+
+To stop the application:
 
 docker compose down
 
-To stop the containers and delete the database volume:
+The MySQL data is stored in a Docker volume, so stopping the containers does not delete registered pets.
+
+To remove the containers and also delete the database data:
 
 docker compose down -v
 
-Warning: using -v removes the stored database data.
+Warning: the -v option removes the database volume and all stored data.
 
 📚 Purpose
 
