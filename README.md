@@ -44,7 +44,7 @@ The system provides a complete interface for registering, viewing, editing, and 
 
 ## 📂 Project Structure
 
-```text
+
 Pet_Shelter-Complete/
 ├── api-pets/
 ├── front-pets/
