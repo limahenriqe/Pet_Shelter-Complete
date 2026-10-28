@@ -11,28 +11,50 @@ export default function Cadastro() {
     const [age, setAge] = useState("");
     const [breed, setBreed] = useState("");
 
-    async function cadastrarPet(e:any) {
-        e.preventDefault()
+    // async function cadastrarPet(e:any) {
+    //     e.preventDefault()
 
-        try {
-            const response = await api.post("/pets", {
-                name,
-                type,
-                age:Number(age),
-                breed
-            })
+    //     try {
+    //         const response = await api.post("/pets", {
+    //             name,
+    //             type,
+    //             age:Number(age),
+    //             breed
+    //         })
 
-            alert("Animal registered successfully!");
-            setName("");
-            setType("");
-            setAge("");
-            setBreed("");
+async function cadastrarPet(e: React.FormEvent) {
 
-        } catch (error) {
-            alert("Error registering animal");
-            console.log(error);
-        }
-    };
+    e.preventDefault()
+
+    try {
+
+        const response = await api.post("/pets", {
+            name,
+            type,
+            age: Number(age),
+            breed
+        })
+
+        console.log("Pet cadastrado:", response.data)
+
+        alert("Animal registered successfully!")
+
+        setName("")
+        setType("")
+        setAge("")
+        setBreed("")
+
+    } catch (error: any) {
+
+        console.log("ERRO COMPLETO:", error)
+        console.log("STATUS:", error.response?.status)
+        console.log("RESPOSTA:", error.response?.data)
+        console.log("URL:", error.config?.url)
+        console.log("BASE URL:", error.config?.baseURL)
+
+        alert("Error registering animal")
+    }
+}
 
     return (
         <div className="min-h-screen bg-gray-100">

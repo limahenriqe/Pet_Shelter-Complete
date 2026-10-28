@@ -11,6 +11,4 @@ app.use(express.json())
 
 app.use('/pets', petsRoutes)
 
-sequelize.sync()
-
 module.exports = app

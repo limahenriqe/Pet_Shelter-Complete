@@ -8,6 +8,13 @@ RUN npm install
 
 COPY . .
 
+<<<<<<< HEAD
+=======
+# ARG NEXT_PUBLIC_API_URL
+
+# ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
+>>>>>>> c52b99ca2e22c046957af5e26bf748ab1521a472
 RUN npm run build
 
 EXPOSE 3001
